@@ -39,7 +39,7 @@ body {
     right: 20px;
     padding: 10px 15px;
     background-color: #2c3e50;
-    color: #FFC0CB; /* Жовтий шрифт */
+    color: #f1c40f; /* Жовтий шрифт */
     border: 1px solid #f1c40f;
     border-radius: 5px;
     cursor: pointer;
@@ -125,4 +125,7 @@ footer {
     text-align: center;
 }
 
+h1 {
+    color: #FF69B4; /* Яскраво-рожевий */
+}
 
