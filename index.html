@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Резюме — Варениця Назарій</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="page-body">
+
+    <button id="theme-toggle" class="theme-btn-fixed">Нічний режим</button>
+
+    <div class="resume-container" id="resume-card">
+        <header>
+            <h1>Варениця Назарій</h1>
+            <div class="contacts">
+                <strong>Посада:</strong> Студент спеціальності "Кібербезпека та захист інформації" <br>
+                <strong>Контакти:</strong> nazarvarenytsya@gmail.com | 076 89 20 876
+            </div>
+        </header>
+
+        <section>
+            <h2>Про себе</h2>
+            <p>
+               Студент другого курсу Національного університету "Львівська політехніка", спеціальність "Кібербезпека". 
+               Маю досвід роботи з: Python, HTML, C#, SQL, а також працював у середовищі Cisco Packet Tracer.
+            </p>
+        </section>
+
+        <section>
+            <h2>Технічні навички</h2>
+            <ul>
+                <li><strong>Мови програмування:</strong> Python, C#, PHP.</li>
+                <li><strong>Робота з даними:</strong> SQL, проектування та адміністрування баз даних.</li>
+                <li><strong>Інструменти:</strong> XAMPP (Apache, MySQL), Git.</li>
+            </ul>
+        </section>
+
+        <section id="comments-section">
+            <h2>Відгуки роботодавців (API)</h2>
+            <p><em>Завантаження відгуків...</em></p>
+        </section>
+
+        <section>
+            <h2>Освіта</h2>
+            <ul>
+                <li>СЗШ №60 (Закінчено)</li>
+                <li>НУ "Львівська політехніка" — Спеціальність Cybersecurity (2024 - теперішній час)</li>
+            </ul>
+        </section>
+    </div>
+
+    <div id="modal" class="modal-hidden">
+        <div class="modal-content">
+            <h3>Зворотній зв'язок</h3>
+            <form action="https://formspree.io/f/mbdzlqbl" method="POST">
+                <input type="text" name="name" placeholder="Ваше ім'я" required>
+                <input type="email" name="email" placeholder="Ваш Email" required>
+                <input type="tel" name="phone" placeholder="Номер телефону" required>
+                <textarea name="message" placeholder="Ваше повідомлення" required></textarea>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn-send">Відправити</button>
+                    <button type="button" id="close-modal" class="btn-close">Закрити</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer id="site-footer"></footer>
+    <script src="script.js"></script>
+</body>
+</html>
