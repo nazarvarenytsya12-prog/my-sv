@@ -27,7 +27,7 @@ body {
     max-width: 800px;
     width: 100%;
     padding: 40px;
-    border: 2px solid #2c3e50;
+    border: 4px solid #2c3e50;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
@@ -124,3 +124,4 @@ footer {
     color: #777;
     text-align: center;
 }
+
