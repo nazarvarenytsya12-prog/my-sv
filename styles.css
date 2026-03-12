@@ -1,4 +1,4 @@
-/* Основні стилі */
+/* Базові стилі */
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
@@ -10,16 +10,9 @@ body {
     transition: 0.3s;
 }
 
-    /* Нічний режим */
-    body.dark-mode {
-        background-color: #1a1a2e;
-        color: #e0e0e0;
-    }
-
-        body.dark-mode .resume-container {
-            background-color: #16213e;
-            border-color: #3498db;
-        }
+/* Нічний режим */
+body.dark-mode { background-color: #1a1a2e; color: #e0e0e0; }
+body.dark-mode .resume-container { background-color: #16213e; border-color: #3498db; }
 
 .resume-container {
     background-color: white;
@@ -31,91 +24,46 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* Фіксована кнопка справа */
+/* СТИЛІ ДЛЯ ПІДСВІЧУВАННЯ КОМЕНТАРІВ */
+#comments-section div {
+    border-left: 3px solid #3498db;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#comments-section div:hover {
+    transform: translateX(10px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+    background-color: #e3f2fd; /* Світло-блакитне підсвічування */
+}
+
+body.dark-mode #comments-section div { background-color: #1a1a2e; }
+body.dark-mode #comments-section div:hover {
+    background-color: #243b55;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.5);
+}
+
+/* Кнопка теми */
 .theme-btn-fixed {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 10px 15px;
-    background-color: #2c3e50;
-    color: #f1c40f; /* Жовтий шрифт */
-    border: 1px solid #f1c40f;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 1001;
-    font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: fixed; top: 20px; right: 20px;
+    padding: 10px 15px; background-color: #2c3e50; color: #f1c40f;
+    border: 1px solid #f1c40f; border-radius: 5px; cursor: pointer; z-index: 1001;
+    font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-body.dark-mode .theme-btn-fixed {
-    background-color: #f1c40f;
-    color: #2c3e50;
-    border-color: #2c3e50;
-}
+body.dark-mode .theme-btn-fixed { background-color: #f1c40f; color: #2c3e50; border-color: #2c3e50; }
 
-/* Модальне вікно */
-.modal-hidden {
-    display: none !important;
-}
+/* Модалка */
+.modal-hidden { display: none !important; }
+#modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+.modal-content { background: white; padding: 30px; border-radius: 10px; width: 350px; color: #333; }
+.modal-content input, .modal-content textarea { width: 100%; margin-bottom: 12px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+.modal-buttons { display: flex; gap: 10px; }
+.btn-send { background: #27ae60; color: white; border: none; padding: 10px; cursor: pointer; flex: 1; border-radius: 5px; }
+.btn-close { background: #e74c3c; color: white; border: none; padding: 10px; cursor: pointer; flex: 1; border-radius: 5px; }
 
-#modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.modal-content {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    width: 350px;
-    color: #333;
-}
-
-    .modal-content input, .modal-content textarea {
-        width: 100%;
-        margin-bottom: 12px;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        box-sizing: border-box;
-    }
-
-.modal-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.btn-send {
-    background: #27ae60;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    flex: 1;
-    border-radius: 5px;
-}
-
-.btn-close {
-    background: #e74c3c;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    flex: 1;
-    border-radius: 5px;
-}
-
-footer {
-    margin-top: 20px;
-    font-size: 0.8em;
-    color: #777;
-    text-align: center;
-}
+footer { margin-top: 20px; font-size: 0.8em; color: #777; }
