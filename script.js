@@ -1,58 +1,70 @@
-﻿// 1. Зберігання даних про систему
+// 1. ЗБЕРЕЖЕННЯ ІНФОРМАЦІЇ ПРО СИСТЕМУ
 const sysInfo = {
     platform: navigator.platform,
     browser: navigator.userAgent
 };
 localStorage.setItem('os_info', JSON.stringify(sysInfo));
-document.getElementById('site-footer').innerHTML = `Система: ${sysInfo.platform} | Браузер: ${sysInfo.browser}`;
 
-// 2. Завантаження відгуків (Варіант 3)
+const footer = document.getElementById('site-footer');
+if (footer) {
+    footer.innerHTML = `Система: ${sysInfo.platform} | Браузер: ${sysInfo.browser}`;
+}
+
+// 2. ЗАВАНТАЖЕННЯ КОМЕНТАРІВ 
 async function fetchComments() {
     try {
         const response = await fetch('https://jsonplaceholder.typicode.com/posts/3/comments');
         const data = await response.json();
         const section = document.getElementById('comments-section');
-        section.innerHTML = '<h2>Відгуки роботодавців</h2>';
 
-        const translations = [
-            "Назар проявив себе як відповідальний фахівець у кібербезпеці.",
-            "Great analytical skills and deep knowledge of Python scripts.",
-            "Робота над базою даних була виконана вчасно та дуже професійно.",
-            "Надійний колега, відмінно працює з Cisco Packet Tracer.",
-            "Дякуємо за допомогу в розгортанні серверів на XAMPP."
-        ];
+        // Очищуємо текст завантаження
+        section.innerHTML = '<h2>Відгуки роботодавців (API)</h2>';
 
-        data.forEach((comment, index) => {
+        data.forEach((comment) => {
             const div = document.createElement('div');
             div.style.borderLeft = "3px solid #3498db";
             div.style.paddingLeft = "15px";
-            div.style.marginBottom = "15px";
-            div.innerHTML = `<strong>${comment.email}</strong><br>${translations[index] || comment.body}`;
+            div.style.marginBottom = "20px";
+            div.style.textAlign = "left";
+
+            div.innerHTML = `
+                <p><strong>${comment.name}</strong> (${comment.email})</p>
+                <p>${comment.body.replace(/\n/g, '<br>')}</p>
+            `;
             section.appendChild(div);
         });
-    } catch (e) { console.error("Помилка API:", e); }
+    } catch (e) {
+        console.error("Помилка API:", e);
+        document.getElementById('comments-section').innerHTML = '<h2>Відгуки роботодавців (API)</h2><p>Помилка завантаження.</p>';
+    }
 }
 fetchComments();
 
-// 3. Відкриття модального вікна для відправки листа (1 хвилина)
+// 3. ТАЙМЕР МОДАЛЬНОГО ВІКНО 
 setTimeout(() => {
-    document.getElementById('modal').classList.remove('modal-hidden');
+    const modal = document.getElementById('modal');
+    if (modal) modal.classList.remove('modal-hidden');
 }, 60000);
 
-document.getElementById('close-modal').onclick = () => {
-    document.getElementById('modal').classList.add('modal-hidden');
-};
+const closeBtn = document.getElementById('close-modal');
+if (closeBtn) {
+    closeBtn.onclick = () => {
+        document.getElementById('modal').classList.add('modal-hidden');
+    };
+}
 
-// 4. Перемикач теми
-const btn = document.getElementById('theme-toggle');
-btn.onclick = () => {
-    document.body.classList.toggle('dark-mode');
-    btn.innerText = document.body.classList.contains('dark-mode') ? "Денний режим" : "Нічний режим";
-};
+// 4. ПЕРЕМИКАЧ ТЕМИ 
+const themeBtn = document.getElementById('theme-toggle');
+if (themeBtn) {
+    themeBtn.onclick = () => {
+        document.body.classList.toggle('dark-mode');
+        themeBtn.innerText = document.body.classList.contains('dark-mode') ? "Денний режим" : "Нічний режим";
+    };
 
-// Автоматична тема за часом
-const hour = new Date().getHours();
-if (hour < 7 || hour >= 21) {
-    document.body.classList.add('dark-mode');
-    btn.innerText = "Денний режим";
+    // Автоматична тема за часом (Денна від 07:00 до 21:00)
+    const hour = new Date().getHours();
+    if (hour < 7 || hour >= 21) {
+        document.body.classList.add('dark-mode');
+        themeBtn.innerText = "Денний режим";
+    }
 }
